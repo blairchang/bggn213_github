@@ -16,4 +16,4 @@ gitcreds_set()
 
 ## Add previous class content
 
-class 05: Data vis with class 06 (Lab 6/HW-lab6.pdf)
+class 06 (https://github.com/blairchang/bggn213_github/blob/main/Lab%206/HW-lab6.pdf)
