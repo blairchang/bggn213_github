@@ -16,4 +16,4 @@ gitcreds_set()
 
 ## Add previous class content
 
-class 06 (https://github.com/blairchang/bggn213_github/blob/main/Lab%206/HW-lab6.pdf)
+class 06: [R functions and R packages from CRAN and BioConductor](https://github.com/blairchang/bggn213_github/blob/main/Lab%206/HW-lab6.pdf)
