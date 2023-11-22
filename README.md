@@ -1,5 +1,5 @@
 # bggn213_github
-My class work from [BGGN213](https://bioboot.github.io/bggn213_F23/) at UC San Diego
+My class work from [BGGN213](https://bioboot.github.io/bggn213_F23/) at UC San Diego (Fall 2023)
 
 
 ## Connecting RStudio to GitHub
