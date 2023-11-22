@@ -1,7 +1,8 @@
 # bggn213_github
-My class work
+My class work from BGGN213 at UCSD
 
-##Connecting RStudio to GitHub
+
+## Connecting RStudio to GitHub
 
 1. Create a Personal Access Token (PAT) on GitHub
 
@@ -12,4 +13,6 @@ create_github_token()
 
 library(gitcreds)
 gitcreds_set()
+
+
 
