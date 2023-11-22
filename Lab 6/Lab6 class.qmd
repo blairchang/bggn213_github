@@ -1,0 +1,162 @@
+---
+title: "102023 Lab6"
+author: "Blair (PID A59000602)"
+format: pdf
+---
+
+# All about functions in R
+
+Every function in R has at least 3 things:
+- name 
+- argument (the input to my function)
+- body
+
+Today we will write a function to grade a class of student assignment scores
+
+
+First I will work with a simplified vector input that I know the answer
+
+
+```{r}
+# Example input vectors to start with
+student1 <- c(100, 100, 100, 100, 100, 100, 100, 90)
+student2 <- c(100, NA, 90, 90, 90, 90, 97, 80)
+student3 <- c(90, NA, NA, NA, NA, NA, NA, NA)
+```
+
+Let's start slow and find the average for student1
+
+```{r}
+mean(student1)
+```
+
+How can we drop the lowest score? I can use `min()` function to find the lowest score 
+
+```{r}
+min(student1)
+
+#I found the function `which.min()` that will locate the lowest score
+
+which.min(student1)
+
+student1[8]
+student1[-8] # excludes 8th score
+
+```
+
+```{r}
+#Drop the lowest score from Student1 and find avg
+mean(student1[-which.min(student1)])
+```
+```{r}
+# Students have NA?
+d <- student2
+mean( d, na.rm = TRUE)
+```
+We can mask NA or change NA to zero.
+We can use the `is.na()` function to find where the missing hw is in the input vector.
+And use `x[!is.na(x)]` to exclude NA from vector
+
+```{r}
+is.na(student3) 
+student3[!is.na(student3)]
+```
+
+```{r}
+b <- student2
+b[ is.na(b)] <- 0
+b
+
+```
+I think we are there.
+
+```{r}
+z <- student3
+# Mask NA to zero
+z[ is.na(z)] <- 0
+# Find the mean dropping the lowest score
+mean(z[ -which.min(z)])
+```
+
+Turn this snippet into a function
+
+```{r}
+grade <- function(x){
+      # This is the body code lives
+      x[ is.na(x)] <- 0
+      mean(x[ -which.min(x)])
+    }
+```
+
+We can use this function now to grade student
+
+```{r}
+grade(student1)
+grade(student2)
+grade(student3)
+```
+Q1  I need to read the gradebook
+
+```{r}
+gradebook <- read.csv("https://tinyurl.com/gradeinput", 
+                      row.names = 1)
+View(gradebook)
+
+# A very useful function that Barry is forcing us to use here is the `apply()`
+
+ans <- apply(gradebook, 1, grade)
+ans
+```
+
+Q2 Find the top score
+```{r}
+which.max(ans)
+```
+Q3 Find the hardest HW? Depends on how we wanna define difficult
+
+```{r}
+hardest_hw <- which.min( apply(gradebook, 2, mean, ma.rm=TRUE))
+hardest_hw
+```
+
+Let's mask NA to zero!
+
+```{r}
+mask <- gradebook
+mask[ is.na(mask) ]<-0
+mask
+```
+
+```{r}
+which.min( apply(mask, 2, mean))
+```
+
+```{r}
+which.min(apply(mask, 2, sum))
+```
+
+So, I would say hw2 is the hardest homework
+
+
+Q4 Which hw can predict the overall student performance?
+
+
+```{r}
+cor(mask$hw2, ans)
+cor(mask$hw1, ans)
+cor(mask$hw5, ans)
+
+```
+Now take `apply()` function again and the `cor()` run over the whole gradebook
+
+```{r}
+apply(mask, 2, cor, y=ans)
+```
+
+
+```{r}
+which.max(apply(mask, 2, cor, y=ans))
+```
+hw5 will be the most predictable hw for students' performance!
+
+

@@ -1,0 +1,78 @@
+---
+title: "HW Class 6 (R Functions)"
+author: "Blair Chang"
+format: pdf
+---
+
+```{r}
+library(bio3d)
+s1 <- read.pdb("4AKE") # kinase with drug
+s2 <- read.pdb("1AKE") # kinase no drug
+s3 <- read.pdb("1E4Y") # kinase with drug
+s1
+```
+Q1 
+read.pdb will read a Protein Data Bank file and give us info such as Protein sequence, and total atoms.
+
+```{r}
+s1.chainA <- trim.pdb(s1, chain="A", elety="CA")
+s2.chainA <- trim.pdb(s2, chain="A", elety="CA")
+s3.chainA <- trim.pdb(s1, chain="A", elety="CA")
+
+s1.chainA
+```
+
+Q2 
+trim.pdb will give us a new smaller PDB object from the larger PDB object.
+
+
+```{r}
+s1.b <- s1.chainA$atom$b
+s2.b <- s2.chainA$atom$b
+s3.b <- s3.chainA$atom$b
+
+plotb3(s1.b, sse=s1.chainA, typ="l", ylab="Bfactor")
+plotb3(s2.b, sse=s2.chainA, typ="l", ylab="Bfactor")
+plotb3(s3.b, sse=s3.chainA, typ="l", ylab="Bfactor")
+
+plotb3(s3.b, sse=NULL, typ="l", ylab="Bfactor")
+
+```
+
+Q3 
+sse = NULL will turn off the marginal black and grey rectangles. 
+They represent the secondary structure object as returned from Secondary Structure Analysis with DSSP or STRIDE.
+
+Q4 
+ggplot or Hierarchical Clustering (hclustplot)
+
+
+```{r}
+hc <- hclust( dist( rbind(s1.b, s2.b, s3.b) ) )
+plot(hc)
+```
+Q5
+s1.b and s3.b
+
+
+
+Q6 How would you generalize the original code above to work with any set of input
+protein structures?
+
+```{r}
+
+Function_Protein_Analysis <- function(x){
+  plotb3(trim.pdb(x, chain="A", elety="CA")$atom$b, 
+         sse = trim.pdb(x, chain="A", elety="CA"), 
+         typ="l", ylab = "Bfactor")}
+
+Function_Protein_Analysis(s1)
+```
+
+```{r}
+#compare my function plot to the original plot. SAME!
+plotb3(s1.b, sse=s1.chainA, typ="l", ylab="Bfactor") 
+```
+
+
+
