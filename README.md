@@ -22,4 +22,4 @@ gitcreds_set()
 
 - Class 07: [Introduction to machine learning for Bioinformatics](https://github.com/blairchang/bggn213_github/tree/main/Lab%207)https://github.com/blairchang/bggn213_github/tree/main/Lab%207)
 
-Find A Gene(https://github.com/blairchang/bggn213_github/tree/main/Find%20A%20Gene%20Project)
+- Find A Gene(https://github.com/blairchang/bggn213_github/tree/main/Find%20A%20Gene%20Project)
