@@ -20,6 +20,6 @@ gitcreds_set()
 
 - Class 06: [R functions and R packages from CRAN and BioConductor](https://github.com/blairchang/bggn213_github/blob/main/Lab%206/HW-lab6.pdf)
 
-- Class 07: [Introduction to machine learning for Bioinformatics](https://github.com/blairchang/bggn213_github/tree/main/Lab%207)https://github.com/blairchang/bggn213_github/tree/main/Lab%207)
+- Class 07: [Introduction to machine learning for Bioinformatics](https://github.com/blairchang/bggn213_github/tree/main/Lab%207)
 
 - [Find A Gene](https://github.com/blairchang/bggn213_github/tree/main/Find%20A%20Gene%20Project)
