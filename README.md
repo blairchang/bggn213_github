@@ -1,5 +1,5 @@
-# bggn213_github
-My class work from [BGGN213](https://bioboot.github.io/bggn213_F23/) at UC San Diego (Fall 2023)
+# Bioinformatics
+My classwork from [BGGN213](https://bioboot.github.io/bggn213_F23/) at UC San Diego (Fall 2023)
 
 
 ## Connecting RStudio to GitHub
@@ -14,7 +14,7 @@ create_github_token()
 library(gitcreds)
 gitcreds_set()
 
-## Add previous class content
+## Class content
 
 - Class 05: [Data exploration and visualization in R](https://github.com/blairchang/bggn213_github/blob/main/Lab%205/lab%205.qmd)
 
