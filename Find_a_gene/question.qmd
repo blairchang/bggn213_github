@@ -1,0 +1,33 @@
+---
+title: "Find a gene Project"
+Author: "Blair Chang PID: A59000602"
+format: html
+---
+
+```{r}
+library(bio3d)
+library(msa)
+```
+
+```{r}
+ali <- read.fasta("ali.fas")
+```
+
+```{r}
+idents <- seqidentity(ali)
+```
+
+```{r}
+idents_mat <- as.matrix(idents)
+```
+
+```{r}
+heatmap(idents_mat, labRow = rownames(idents_mat) , cexRow = 0.8, labCol = rownames(idents_mat), cexCol = 0.8, margins = c(13,13))
+
+```
+
+```{r}
+a <- read.fasta("fasta-1.txt")
+b <- blast.pdb(a)
+```
+
